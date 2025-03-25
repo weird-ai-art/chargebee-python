@@ -2,14 +2,13 @@ from dataclasses import dataclass
 from chargebee.model import Model
 from typing import Dict, List, Any
 from chargebee.response import Response
+from chargebee.models.card.responses import CardResponse
 from chargebee.models import (
     unbilled_charge,
     payment_intent,
     invoice,
-    card,
     advance_invoice_schedule,
     customer,
-    card,
     invoice,
     unbilled_charge,
     credit_note,
@@ -274,7 +273,7 @@ class SubscriptionResponse(Model):
 class CreateResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     headers: Dict[str, str] = None
@@ -284,7 +283,7 @@ class CreateResponse(Response):
 class CreateForCustomerResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     headers: Dict[str, str] = None
@@ -294,7 +293,7 @@ class CreateForCustomerResponse(Response):
 class CreateWithItemsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     headers: Dict[str, str] = None
@@ -304,7 +303,7 @@ class CreateWithItemsResponse(Response):
 class ListSubscriptionResponse:
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
 
 
 @dataclass
@@ -354,7 +353,7 @@ class ListDiscountsResponse:
 class RetrieveResponse:
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -362,7 +361,7 @@ class RetrieveResponse:
 class RetrieveWithScheduledChangesResponse:
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -370,7 +369,7 @@ class RetrieveWithScheduledChangesResponse:
 class RemoveScheduledChangesResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
     headers: Dict[str, str] = None
 
@@ -379,7 +378,7 @@ class RemoveScheduledChangesResponse(Response):
 class RemoveScheduledCancellationResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -387,7 +386,7 @@ class RemoveScheduledCancellationResponse(Response):
 class RemoveCouponsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -395,7 +394,7 @@ class RemoveCouponsResponse(Response):
 class UpdateResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -406,7 +405,7 @@ class UpdateResponse(Response):
 class UpdateForItemsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -417,7 +416,7 @@ class UpdateForItemsResponse(Response):
 class ChangeTermEndResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -428,7 +427,7 @@ class ChangeTermEndResponse(Response):
 class ReactivateResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     headers: Dict[str, str] = None
@@ -450,7 +449,7 @@ class ChargeAddonAtTermEndResponse(Response):
 class ChargeFutureRenewalsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     advance_invoice_schedules: List[
         "advance_invoice_schedule.AdvanceInvoiceScheduleResponse"
@@ -494,7 +493,7 @@ class RegenerateInvoiceResponse(Response):
 class ImportSubscriptionResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     headers: Dict[str, str] = None
 
@@ -503,7 +502,7 @@ class ImportSubscriptionResponse(Response):
 class ImportForCustomerResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     headers: Dict[str, str] = None
 
@@ -524,7 +523,7 @@ class ImportUnbilledChargesResponse(Response):
 class ImportForItemsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     headers: Dict[str, str] = None
 
@@ -540,7 +539,7 @@ class OverrideBillingProfileResponse(Response):
 class DeleteResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -548,7 +547,7 @@ class DeleteResponse(Response):
 class PauseResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -559,7 +558,7 @@ class PauseResponse(Response):
 class CancelResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -570,7 +569,7 @@ class CancelResponse(Response):
 class CancelForItemsResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -581,7 +580,7 @@ class CancelForItemsResponse(Response):
 class ResumeResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     headers: Dict[str, str] = None
@@ -591,7 +590,7 @@ class ResumeResponse(Response):
 class RemoveScheduledPauseResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
@@ -599,7 +598,7 @@ class RemoveScheduledPauseResponse(Response):
 class RemoveScheduledResumptionResponse(Response):
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: CardResponse = None
     headers: Dict[str, str] = None
 
 
