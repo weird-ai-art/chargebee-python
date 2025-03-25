@@ -9,7 +9,6 @@ from chargebee.models import (
     card,
     advance_invoice_schedule,
     customer,
-    card,
     invoice,
     unbilled_charge,
     credit_note,
@@ -18,6 +17,8 @@ from chargebee.models import (
     payment_source,
     discount,
 )
+
+from chargebee.models.card import CardResponse as card_CardResponse
 
 
 @dataclass
@@ -275,7 +276,7 @@ class CreateResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
 
@@ -285,7 +286,7 @@ class CreateForCustomerResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
 
@@ -295,7 +296,7 @@ class CreateWithItemsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
 
@@ -304,7 +305,7 @@ class CreateWithItemsResponse(Response):
 class ListSubscriptionResponse:
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -355,7 +356,7 @@ class RetrieveResponse(Response):
 
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -363,7 +364,7 @@ class RetrieveWithScheduledChangesResponse(Response):
 
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -371,7 +372,7 @@ class RemoveScheduledChangesResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
 
 
@@ -380,7 +381,7 @@ class RemoveScheduledCancellationResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -388,7 +389,7 @@ class RemoveCouponsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -396,7 +397,7 @@ class UpdateResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -407,7 +408,7 @@ class UpdateForItemsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -418,7 +419,7 @@ class ChangeTermEndResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -429,7 +430,7 @@ class ReactivateResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
 
@@ -451,7 +452,7 @@ class ChargeFutureRenewalsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     advance_invoice_schedules: List[
         "advance_invoice_schedule.AdvanceInvoiceScheduleResponse"
@@ -495,7 +496,7 @@ class ImportSubscriptionResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
 
 
@@ -504,7 +505,7 @@ class ImportForCustomerResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
 
 
@@ -525,7 +526,7 @@ class ImportForItemsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
 
 
@@ -541,7 +542,7 @@ class DeleteResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -549,7 +550,7 @@ class PauseResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -560,7 +561,7 @@ class CancelResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -571,7 +572,7 @@ class CancelForItemsResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
     credit_notes: List["credit_note.CreditNoteResponse"] = None
@@ -582,7 +583,7 @@ class ResumeResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
     invoice: "invoice.InvoiceResponse" = None
     unbilled_charges: List["unbilled_charge.UnbilledChargeResponse"] = None
 
@@ -592,7 +593,7 @@ class RemoveScheduledPauseResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
@@ -600,7 +601,7 @@ class RemoveScheduledResumptionResponse(Response):
     is_idempotency_replayed: bool
     subscription: SubscriptionResponse
     customer: "customer.CustomerResponse"
-    card: "card.CardResponse" = None
+    card: card_CardResponse = None
 
 
 @dataclass
